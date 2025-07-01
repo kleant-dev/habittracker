@@ -13,26 +13,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: src/DevHabitApi
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore
+      - name: Restore dependencies
         run: dotnet restore DevHabitApi.sln
 
       - name: Build
         run: dotnet build DevHabitApi.sln --configuration Release --no-restore
 
-      - name: Test
+      - name: Run Tests
         run: dotnet test DevHabitApi.sln --configuration Release --no-restore --no-build
 
       - name: Publish
-        run: dotnet publish DevHabitApi.sln --configuration Release --no-restore --no-build
+        run: dotnet publish src/DevHabitApi/DevHabitApi.csproj --configuration Release --no-restore --no-build -o ./publish
