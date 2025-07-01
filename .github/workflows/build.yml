@@ -15,7 +15,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: DevHabitApi
+        working-directory: src/DevHabitApi
 
     steps:
       - uses: actions/checkout@v4
