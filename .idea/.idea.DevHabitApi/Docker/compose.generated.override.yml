@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  devhabitapi:
+    build:
+      context: "/home/kleo/RiderProjects/DevHabitApi"
+      dockerfile: "src/DevHabitApi/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net9.0/DevHabitApi.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "devhabitapi:dev"
+    ports: []
+    volumes:
+    - "/home/kleo/RiderProjects/DevHabitApi/src/DevHabitApi:/app:rw"
+    - "/home/kleo/RiderProjects/DevHabitApi:/src:rw"
+    - "/home/kleo/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
